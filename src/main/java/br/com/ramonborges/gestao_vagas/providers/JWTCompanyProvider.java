@@ -8,7 +8,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
 @Service
-public class JWTProvider {
+public class JWTCompanyProvider {
 
     @Value("${security.token.secret}")
     private String secretKey;

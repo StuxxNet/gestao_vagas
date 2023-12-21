@@ -9,17 +9,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import br.com.ramonborges.gestao_vagas.providers.JWTProvider;
+import br.com.ramonborges.gestao_vagas.providers.JWTCompanyProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class SecurityFilter extends OncePerRequestFilter{
+public class SecurityCompanyFilter extends OncePerRequestFilter{
 
     @Autowired
-    private JWTProvider jwtProvider;
+    private JWTCompanyProvider jwtCompanyProvider;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) 
@@ -30,7 +30,7 @@ public class SecurityFilter extends OncePerRequestFilter{
             String header = request.getHeader("Authorization");
             
             if(header != null) {
-                var subjectToken = this.jwtProvider.validateToken(header);
+                var subjectToken = this.jwtCompanyProvider.validateToken(header);
                 if(subjectToken.isEmpty()) {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     return;

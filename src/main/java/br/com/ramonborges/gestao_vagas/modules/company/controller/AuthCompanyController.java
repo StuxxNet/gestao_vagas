@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ramonborges.gestao_vagas.modules.company.dto.AuthCompanyDTO;
+import br.com.ramonborges.gestao_vagas.modules.company.dto.AuthCompanyRequestDTO;
 import br.com.ramonborges.gestao_vagas.modules.company.useCases.AuthCompanyUseCase;
 
 @RestController
@@ -21,10 +21,10 @@ public class AuthCompanyController {
     private AuthCompanyUseCase authCompanyUseCase;
     
     @PostMapping("/company")
-    public ResponseEntity<Object> auth(@RequestBody AuthCompanyDTO authCompanyDTO) {
+    public ResponseEntity<Object> auth(@RequestBody AuthCompanyRequestDTO authCompanyRequestDTO) {
         try {
-            var jwt = this.authCompanyUseCase.execute(authCompanyDTO);
-            return ResponseEntity.ok().body(jwt);
+            var token = this.authCompanyUseCase.execute(authCompanyRequestDTO);
+            return ResponseEntity.ok().body(token);
         } catch (AuthenticationException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
