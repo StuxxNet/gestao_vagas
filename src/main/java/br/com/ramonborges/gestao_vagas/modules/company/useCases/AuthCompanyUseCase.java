@@ -2,6 +2,7 @@ package br.com.ramonborges.gestao_vagas.modules.company.useCases;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 
 import javax.naming.AuthenticationException;
 
@@ -48,6 +49,7 @@ public class AuthCompanyUseCase {
         var token = JWT.create().withIssuer("javagas")
             .withExpiresAt(expiresIn)
             .withSubject(company.getId().toString())
+            .withClaim("roles", Arrays.asList("COMPANY"))
             .sign(algorithm);
 
         var autoCompanyResponse = AuthCompanyResponseDTO.builder()
