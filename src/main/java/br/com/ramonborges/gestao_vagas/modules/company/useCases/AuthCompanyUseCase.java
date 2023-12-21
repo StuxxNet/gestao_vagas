@@ -14,7 +14,6 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
 import br.com.ramonborges.gestao_vagas.exceptions.CompanyNotFoundException;
-import br.com.ramonborges.gestao_vagas.modules.candidate.dto.AuthCandidateResponseDTO;
 import br.com.ramonborges.gestao_vagas.modules.company.dto.AuthCompanyRequestDTO;
 import br.com.ramonborges.gestao_vagas.modules.company.dto.AuthCompanyResponseDTO;
 import br.com.ramonborges.gestao_vagas.modules.company.repository.CompanyRepository;
